@@ -6,19 +6,74 @@
    <meta name="description" content="A stupid website that contains some vuvien's stuff and a TON of random stuff that you never asked for!">
    <meta name="keywords" content="green,personal,vietnam,aboutme,dark">
    <meta name="author" content="Vu Vien">
-<meta property="og:image" content="https://vuvien.nekoweb.org/thumbnail.jpg">
+<meta property="og:image" content="https://vuvien.nekoweb.org/thumbnail2.jpg">
    <link rel="icon" type="image/x-icon" href="https://vuvien.nekoweb.org/finallogo2.svg">
 <meta name="theme-color" content="#00be91" />
 <meta name="apple-mobile-web-app-status-bar-style" content="#00be91">
-<meta http-equiv="refresh" content="0;url=https://vuvien.nekoweb.org" />
 <style>
+/* Makes the tap highlight invisible for all elements */
+* {
+    -webkit-tap-highlight-color: transparent;
+}
+@font-face { 
+	font-family: segoeui; 
+	src: url('https://vuvien.nekoweb.org/segoeuithis.ttf'); 
+}
+@font-face { 
+	font-family: papyrus; 
+	src: url('https://vuvien.nekoweb.org/papyrus.ttf');
+	}
+@font-face {
+	font-family:spacemono;
+	src: url('https://vuvien.nekoweb.org/spacemono-regular.ttf')
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap');
 body {
-background-color:black;
-color:white;
-font-family:system;
+	background-color:black;
+	scroll-behavior: smooth;
+	color:white;
+	font-family: segoeui;
+}
+html {
+scroll-behavior: smooth;
+}
+.wrap {
+position: fixed; /* or absolute */
+  top: 50%;
+  left: 50%;
+  /* bring your own prefixes */
+  transform: translate(-50%, -50%);
+  background:url('/images/waffle.gif');
+  background-size: 200px 200px;
+border:2px solid rgba(255,255,255,0.25);
+	border-radius: 50px;
+}
+.box {
+	padding: 70px;
+
+}
+button {
+	background:white;
+	border: 2px solid white;
+	color:black;
+	padding: 20px;
+	font-size: 15px;
+	border-radius: 7px;
+	font-display: segoeui;
 }
 </style>
-</head>
 <body>
-<h1>Redirecting to <a href="https://vuvien.nekoweb.org/">vuvien.nekoweb.org</a></h1>
+	<div class="wrap">
+		<div class="box">
+			<h1>Site under revamping</h1>
+			<p>Check back soon!</p>
+			<a href="https://vuvien.atabook.org">
+				<button>See guestbook</button>
+<iframe src="//incr.easrng.net/badge?key=-2" style="margin-block:40px;z-index:10;filter: drop-shadow(0px 0px 2px gray);border-radius:4px;display:block;margin-left:auto;margin-right:auto;scale:2.25;background: url(//incr.easrng.net/bg.gif);width:88px;height:31px" title="increment badge" width="88px" height="31px" frameborder="0"></iframe>
+
+			</a>
+		</div>
+	</div>
 </body>
+</html>
