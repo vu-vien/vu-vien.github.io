@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Windows Phone Layout</title>
+    <style>
+@font-face { 
+	font-family: segoeui; 
+	src: url('https://vuvien.nekoweb.org/segoeuithis.ttf'); 
+}
+@font-face {
+	font-family:spacemono;
+	src: url('https://vuvien.nekoweb.org/spacemono-regular.ttf')
+}
+* {
+	font-family: segoeui;
+}
+html {
+-webkit-tap-highlight-color:transparent;
+}
+:root {
+    --accent : #00be91;
+    --bodybackground : black;
+}
+html {
+    scrollbar-color: rgba(0,0,0,0);
+    scrollbar-width: 1px;
+}
+html::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}  
+html::-webkit-scrollbar-track {
+    background-color: rgba(0,0,0,0);
+}
+html::-webkit-scrollbar-thumb {
+    background: rgba(0,0,0,0);
+}
+.tile {
+    scrollbar-color: rgba(0,0,0,0);
+    scrollbar-width: 1px;
+}
+.tile::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}  
+.tile::-webkit-scrollbar-track {
+    background-color: rgba(0,0,0,0);
+}
+.tile::-webkit-scrollbar-thumb {
+    background: rgba(0,0,0,0);
+}
+a {
+    text-decoration: none;
+    color: inherit;
+}
+.link {
+	color:#39db90;
+	transition: 0.3s;
+}
+body {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-color: var(--bodybackground);
+    background-blend-mode: multiply;
+    background-size: contain;
+    color:white;
+}
+.a {
+perspective: 500px;
+}
+
+@keyframes startUp {
+  from {
+ transform:rotateY(-120deg) translate(-1000px);
+transform-style: preserve-3d;
+opacity: 1;
+  }
+  to {
+  transform:rotateY(0deg) translate(0px);
+transform-style: preserve-3d;
+opacity: 1;
+  }
+}
+@keyframes enter {
+  from {
+  	transform:rotateY(0deg) translate(0px);
+transform-style: preserve-3d;
+opacity: 1;
+  }
+  to {
+  	transform:rotateY(120deg)translate(1000px);
+transform-style: preserve-3d;
+opacity: 1;
+  }
+}
+
+
+.bar {
+	width: 100%;
+	height: 35px;
+	position: fixed;
+	bottom: 0;
+	margin: 0;
+	color:white;
+	background: rgba(0,0,0,0.5);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+  z-index: 100;
+  text-align: center;
+  font-size: 20px;
+  transition: 0.3s;
+  padding-block: 15px;
+}
+.bar img {
+	width: 70px;
+	margin-top: -17px;
+pointer-events: none;
+}
+.bar:active {
+	background: rgba(0,190,145,0.75);
+color:#39db90;
+}
+.bottom-filler {
+	height: 100px;
+	width: 100%;
+}
+.water-filter {
+	margin: 0;
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	background: url('/images/water.gif');
+	opacity: 1;
+	z-index: 0;
+	display: none;
+}
+.bliss {
+	margin: 0;
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	background: url('https://images2.alphacoders.com/941/thumb-1920-941898.jpg');
+	background-size: cover;
+	background-repeat: no-repeat;
+	opacity: 1;
+	z-index: 0;
+	display: none;
+}
+.more-apps {
+	margin: 0;
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	background: rgba(0,0,0,0.5);
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+	opacity: 0;
+	z-index: -10;
+	padding: 30px;
+}
+@keyframes left {
+  from {
+  	transform:translate(1000px);
+opacity: 0;
+  }
+  to {
+  	transform:translate(0px);
+opacity: 1;
+  }
+}
+@keyframes right {
+  from {
+  	transform:translate(0px);
+opacity: 1;
+  }
+  to {
+  	transform:translate(1000px);
+opacity: 0;
+  }
+}
+.more-apps .back {
+	width: 50px;
+	height: auto;
+}
+.more-apps .ex-apps {
+	width: 75px;
+	weight:auto;
+pointer-events: none;
+}
+.more-apps p {
+	position: relative;
+	transition: 0.4s;
+}
+.more-apps .label {
+position:relative;
+right:-20px;
+font-size: 30px;
+top:-30px;
+}
+.more-apps p:hover {
+}
+.more-apps p:active {
+	scale: 0.95;
+}
+.back1 {
+	margin-block-end: 0px;
+	position: relative;
+}
+.back1 p {
+font-weight: bold;
+position:relative;
+right:-70px;
+font-size: 30px;
+bottom: 52px;
+}
+@keyframes zoom {
+  from {
+  	scale: 0.9;
+  }
+  to {
+  	scale: 1;
+  }
+}
+@keyframes shrink {
+  from {
+  	scale: 1;
+  }
+  to {
+  	scale: 0.9;
+  }
+}
+.apps-page {
+	width: 100%;
+	height: 90%;
+	overflow: auto;
+}
+p {
+	padding: 0;
+	margin: 0;
+}
+.container {
+	max-width: 700px;
+	margin-left: auto;
+	margin-right: auto;
+	padding-inline: 30px;
+	animation: startUp 1s;
+	backface-visibility: hidden;
+}
+.top {
+	width:100%;
+	padding-inline: 10px;
+	margin-block: 40px;
+}
+.top p {
+	font-weight: bold;
+	font-size: 20px;
+margin-block-start: 20px;
+}
+.hello {
+	font-size: 50px;
+	line-height: 42px;
+	margin-block: 50px;
+}
+.about {
+	margin-block-start:-40px ;
+}
+.discord {
+	border: 2px solid white;
+	max-width: 350px;
+	width: 100%;
+	margin-block-start: 30px;
+	border-radius: 50px;
+}
+.game {
+	width: 100px;
+	transition: 0.25s;
+}
+.game:hover {
+	scale: 1.2;
+}
+.link:hover {
+	font-size: 30px;
+}
+@-webkit-keyframes rotating /* rotating background */ {
+  from {
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes rotating {
+  from {
+    -ms-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -ms-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+.rotating {
+  -webkit-animation: rotating 30s linear infinite;
+  -moz-animation: rotating 30s linear infinite;
+  -ms-animation: rotating 30s linear infinite;
+  -o-animation: rotating 30s linear infinite;
+  animation: rotating 30s linear infinite;
+  z-index: -1;
+  filter:grayscale(100%);
+  display: none;
+}
+@keyframes fade {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 0.1;
+	}
+}
+    </style>
+</head>
+<body id="body">
+
+	<div id="bliss" class="bliss">
+	</div>
+	<script>
+	// This is so good thanks
+// Source - https://stackoverflow.com/a/53192539
+// Posted by Mahbub Hasan, modified by community. See post 'Timeline' for change history
+// Retrieved 2026-03-01, License - CC BY-SA 4.0
+
+  var container = document.querySelector("body");
+
+  container.addEventListener("touchstart", startTouch, false);
+  container.addEventListener("touchmove", moveTouch, false);
+
+  // Swipe Up / Down / Left / Right
+  var initialX = null;
+  var initialY = null;
+
+  function startTouch(e) {
+    initialX = e.touches[0].clientX;
+    initialY = e.touches[0].clientY;
+  };
+
+  function moveTouch(e) {
+    if (initialX === null) {
+      return;
+    }
+
+    if (initialY === null) {
+      return;
+    }
+
+    var currentX = e.touches[0].clientX;
+    var currentY = e.touches[0].clientY;
+
+    var diffX = initialX - currentX;
+    var diffY = initialY - currentY;
+
+    if (Math.abs(diffX) > Math.abs(diffY)) {
+      // sliding horizontally
+      if (diffX > 0) {
+        // swiped left
+const apps = document.getElementById("container") ;
+        apps.style.animation = "shrink 0.5s" ;
+        apps.style.scale = 0.9 ;
+        const panel = document.getElementById("more-apps") ;
+        panel.style.opacity = 1 ;
+        panel.style.zIndex = 10 ;
+        panel.style.animation = "left 0.5s" ;
+        s = 0;
+        
+      } else {
+        // swiped right
+        const apps = document.getElementById("container") ;
+        apps.style.animation = "zoom 0.5s" ;
+        apps.style.scale = 1 ;
+        const panel = document.getElementById("more-apps") ;
+        panel.style.opacity = 0 ;
+        setTimeout(back, 250);
+        panel.style.animation = "right 0.5s" ;
+        function back() {
+        	s = 1;
+panel.style.zIndex = -10 ;
+        }
+      }  
+    } else {
+      // sliding vertically
+      if (diffY > 0) {
+        // swiped up
+        console.log("swiped up");
+      } else {
+        // swiped down
+        console.log("swiped down");
+      }  
+    }
+
+    initialX = null;
+    initialY = null;
+
+    e.preventDefault();
+  };
+
+	</script>
+	<div id="more-apps" class="more-apps">
+		<div onclick="close2()" class="back1">
+		<script>
+			function close2() {
+        const apps = document.getElementById("container") ;
+        apps.style.animation = "zoom 0.5s" ;
+        apps.style.scale = 1 ;
+        const panel = document.getElementById("more-apps") ;
+        panel.style.opacity = 0 ;
+        panel.style.animation = "right 0.5s" ;
+setTimeout(() => {
+  panel.style.zIndex = -10 ;
+}, 250);
+			}
+		</script>
+		<img class="back" src="/images/icons/back.png">
+	    <p>NAVIGATION</p>
+		</div>
+		<div class="apps-page">
+			<a href="/index">
+		<p>
+		<img class="ex-apps" src="/images/icons/home.jpg">
+		<span class="label">Home</span>
+		</p>
+		</a>
+		<a href="/about">
+		<p>
+		<img style="filter:grayscale(100%)" class="ex-apps" src="/images/icons/about.jpg">
+		<span class="label">About me</span>
+		</p>
+		</a>
+		<a href="/gallery">
+		<p>
+		<img class="ex-apps" src="/images/icons/pictures.ico">
+		<span class="label" id="shared">Gallery</span>
+<span style="display:none" id="one">https://vuvien.xyz</span>
+		</p>
+		</a>
+<a href="/links">
+		<p>
+		<img class="ex-apps" src="/images/icons/link.jpg">
+		<span class="label">Links & Friends</span>
+		</p>
+		</a>
+		<a href="/gb">
+		<p>
+		<img class="ex-apps" src="/images/icons/gb.jpg">
+		<span class="label">Sign guestbook</span>
+		</p>
+		</a>
+
+<div style="visibility:hidden;width:100%;height:200px">a</div>
+	    </div>
+	</div>
+	<div id="water" class="water-filter"></div>
+
+	<div onclick="more2()" class="bar">
+		<script>
+function showTime() {
+    const timeNow = new Date().toLocaleTimeString("en-US");
+    document.getElementById('clock2').textContent = timeNow;
+}
+setInterval(showTime, 1000);
+//
+var s = 1 ;
+function more2() {
+	if (s == 1) {
+const apps = document.getElementById("container") ;
+        apps.style.animation = "shrink 0.5s" ;
+        apps.style.scale = 0.9 ;
+        const panel = document.getElementById("more-apps") ;
+        panel.style.opacity = 1 ;
+        panel.style.zIndex = 10 ;
+        panel.style.animation = "left 0.5s" ;
+        s = 0 ;
+	} else {
+const apps = document.getElementById("container") ;
+        apps.style.animation = "zoom 0.5s" ;
+        apps.style.scale = 1 ;
+        const panel = document.getElementById("more-apps") ;
+        panel.style.opacity = 0 ;
+        panel.style.animation = "right 0.5s" ;
+setTimeout(() => {
+  panel.style.zIndex = -10 ;
+s = 1 ;
+}, 250);
+	}
+}
+		</script>
+<img src="/images/icons/home.png">
+		<p><span id="clock2"></span></p>
+	</div>
+
+<img alt="trong dong dong son background" class="rotating" src="https://vuvien.nekoweb.org/trongdong2.png" style ="pointer-events: none;opacity:0.1;position:fixed; z-index:-1; top:-350px" width="1000px" height="1000px">
+
+<div class="a">
+	<div id="container" class="container">
+	<div class="top">
+		<p>ABOUT ME</p>
+	</div>
+	<p class="hello">Xin chào!! I'm <strong>Vien</strong></p>
+	<p style="margin-block:30px;position:relative;top:-40px;opacity:0.5">I like to make things, and so i'm learning how to make things ^^</p>
+	<p class="about">A random <a class="link" href="https://en.wikipedia.org/wiki/Vietnam">Vietnamese</a> & <a class="link" href="https://gender.fandom.com/wiki/Demigirl">demigirl</a> came from <a class="link" href="https://en.wikipedia.org/wiki/Ngh%E1%BB%87_An_province">Nghe An</a>, who spending alot of time on the internet doing random things. 
+	<br>Somehow, i'm being known for creating stuff on <a class="link" href="https://castle.xyz">castle.xyz</a>.It's a mobile platform for small games + built-in light weight game engine.
+	<br><br>A little bit more about myself:
+	<br>My name is Hoan Vien, but please call me vuvien/vien !
+	<br>I'm young.
+	<br>Struggling with JavaScript ALOT u_u 
+	<br>In my free time, i do random things on the net or just go outside searching for fresh air.
+	<br>I'm NOT a dev, designer, animator, artist bla bla bla...
+	<br><br>My discord:
+	<br>
+<a href="https://discord.com/users/777798212743856128/"><img class="discord" src="https://lanyard.cnrad.dev/api/777798212743856128?bg=inherit&hideActivity=true&showDisplayName=false&theme=dark"></a>
+	<br><br>Games i like:
+	<br><span style="opacity:0.5">There's alot more, but these are the best!</span>
+	<br><br>
+<img style="width:100px;height:auto" class="game" src="/images/g1.jpg">
+<img style="width:100px;height:auto" class="game" src="/images/g5.jpg">
+<img style="width:100px;height:auto" class="game" src="/images/g8.jpeg">
+<img style="width:100px;height:auto" class="game" src="/images/g3.jpg">
+<img style="width:100px;height:auto" class="game" src="/images/g4.jpg">
+<img style="width:100px;height:auto" class="game" src="/images/g7.jpg">
+<img style="width:100px;height:auto" class="game" src="/images/g2.jpg">
+<img style="width:100px;height:auto" class="game" src="/images/g6.jpg">
+	<br>
+	</p>
+	</div>
+	</div>
+</body>
+</html>

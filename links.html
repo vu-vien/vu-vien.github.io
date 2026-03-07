@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Windows Phone Layout</title>
+    <style>
+@font-face { 
+	font-family: segoeui; 
+	src: url('https://vuvien.nekoweb.org/segoeuithis.ttf'); 
+}
+@font-face {
+	font-family:spacemono;
+	src: url('https://vuvien.nekoweb.org/spacemono-regular.ttf')
+}
+* {
+	font-family: segoeui;
+}
+html {
+-webkit-tap-highlight-color:transparent;
+}
+:root {
+    --accent : #00be91;
+    --bodybackground : black;
+}
+html {
+    scrollbar-color: rgba(0,0,0,0);
+    scrollbar-width: 1px;
+}
+html::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}  
+html::-webkit-scrollbar-track {
+    background-color: rgba(0,0,0,0);
+}
+html::-webkit-scrollbar-thumb {
+    background: rgba(0,0,0,0);
+}
+.tile {
+    scrollbar-color: rgba(0,0,0,0);
+    scrollbar-width: 1px;
+}
+.tile::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}  
+.tile::-webkit-scrollbar-track {
+    background-color: rgba(0,0,0,0);
+}
+.tile::-webkit-scrollbar-thumb {
+    background: rgba(0,0,0,0);
+}
+a {
+    text-decoration: none;
+    color: inherit;
+}
+.link {
+	color:#39db90;
+	transition: 0.3s;
+}
+body {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-color: var(--bodybackground);
+    background-blend-mode: multiply;
+    background-size: contain;
+    color:white;
+}
+.a {
+perspective: 500px;
+}
+
+@keyframes startUp {
+  from {
+ transform:rotateY(-120deg) translate(-1000px);
+transform-style: preserve-3d;
+opacity: 1;
+  }
+  to {
+  transform:rotateY(0deg) translate(0px);
+transform-style: preserve-3d;
+opacity: 1;
+  }
+}
+@keyframes enter {
+  from {
+  	transform:rotateY(0deg) translate(0px);
+transform-style: preserve-3d;
+opacity: 1;
+  }
+  to {
+  	transform:rotateY(120deg)translate(1000px);
+transform-style: preserve-3d;
+opacity: 1;
+  }
+}
+
+
+.bar {
+	width: 100%;
+	height: 35px;
+	position: fixed;
+	bottom: 0;
+	margin: 0;
+	color:white;
+	background: rgba(0,0,0,0.5);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+  z-index: 100;
+  text-align: center;
+  font-size: 20px;
+  transition: 0.3s;
+  padding-block: 15px;
+}
+.bar2 {
+	width: 100%;
+	height: 35px;
+	position: fixed;
+	bottom: -100;
+	margin: 0;
+	color:white;
+	background: rgba(0,0,0,0.5);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+  z-index: 5;
+  text-align: center;
+  font-size: 20px;
+  transition: 0.3s;
+  padding-block: 15px;
+}
+.bar2 p {
+	margin-top: -6.5px;
+	max-width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	width:300px;
+	padding: 10px;
+	background:rgba(255,255,255,0.2);
+    transition: 0.3s;
+}
+.bar2 p:active {
+	opacity: 0.5;
+}
+.bar img {
+	width: 70px;
+	margin-top: -17px;
+pointer-events: none;
+}
+.bar:active {
+	background: rgba(0,190,145,0.75);
+color:#39db90;
+}
+.bottom-filler {
+	height: 100px;
+	width: 100%;
+}
+
+.more-apps {
+	margin: 0;
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	background: rgba(0,0,0,0.5);
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+	opacity: 0;
+	z-index: -10;
+	padding: 30px;
+}
+@keyframes left {
+  from {
+  	transform:translate(1000px);
+opacity: 0;
+  }
+  to {
+  	transform:translate(0px);
+opacity: 1;
+  }
+}
+@keyframes right {
+  from {
+  	transform:translate(0px);
+opacity: 1;
+  }
+  to {
+  	transform:translate(1000px);
+opacity: 0;
+  }
+}
+.more-apps .back {
+	width: 50px;
+	height: auto;
+}
+.more-apps .ex-apps {
+	width: 75px;
+	weight:auto;
+pointer-events: none;
+}
+.more-apps p {
+	position: relative;
+	transition: 0.4s;
+}
+.more-apps .label {
+position:relative;
+right:-20px;
+font-size: 30px;
+top:-30px;
+}
+.more-apps p:hover {
+}
+.more-apps p:active {
+	scale: 0.95;
+}
+.back1 {
+	margin-block-end: 0px;
+	position: relative;
+}
+.back1 p {
+font-weight: bold;
+position:relative;
+right:-70px;
+font-size: 30px;
+bottom: 52px;
+}
+@keyframes zoom {
+  from {
+  	scale: 0.9;
+  }
+  to {
+  	scale: 1;
+  }
+}
+@keyframes shrink {
+  from {
+  	scale: 1;
+  }
+  to {
+  	scale: 0.9;
+  }
+}
+.apps-page {
+	width: 100%;
+	height: 90%;
+	overflow: auto;
+}
+p {
+	padding: 0;
+	margin: 0;
+}
+.container {
+	padding-inline: 30px;
+	max-width: 700px;
+	margin-left: auto;
+	margin-right: auto;
+	animation: startUp 1s;
+	backface-visibility: hidden;
+}
+.top {
+	width:100%;
+	padding-inline: 10px;
+	margin-block: 40px;
+}
+.top p {
+	font-weight: bold;
+	font-size: 20px;
+margin-block-start: 20px;
+}
+.hello {
+	font-size: 50px;
+	line-height: 42px;
+	margin-block: 50px;
+}
+.about {
+	margin-block-start:-40px ;
+}
+.discord {
+	border: 2px solid white;
+	max-width: 350px;
+	width: 100%;
+	margin-block-start: 30px;
+	border-radius: 50px;
+}
+.game {
+	width: 100px;
+	transition: 0.25s;
+}
+.game:hover {
+	scale: 1.2;
+}
+.link:hover {
+	font-size: 30px;
+}
+@-webkit-keyframes rotating /* rotating background */ {
+  from {
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes rotating {
+  from {
+    -ms-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -ms-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+.rotating {
+  -webkit-animation: rotating 30s linear infinite;
+  -moz-animation: rotating 30s linear infinite;
+  -ms-animation: rotating 30s linear infinite;
+  -o-animation: rotating 30s linear infinite;
+  animation: rotating 30s linear infinite;
+  z-index: -1;
+  filter:grayscale(100%);
+  display: none;
+}
+@keyframes fade {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+h1 {
+	font-weight: normal;
+}
+.container p {
+	margin-block: 20px;
+	opacity: 0.5;
+}
+
+.top p {
+	opacity: 1;
+}
+.container img {
+	image-rendering: pixelated;
+}
+.link-button p {
+	max-width: 600px;
+	line-height:31px;
+	opacity: 1;
+	word-break: break-all;
+	background: rgba(255,255,255,0.1);
+}
+.link-button img {
+	float:left;
+	margin-inline-end: 10px;
+}
+    </style>
+</head>
+<body id="body">
+
+	<div id="bliss" class="bliss">
+	</div>
+	<script>
+	// This is so good thanks
+// Source - https://stackoverflow.com/a/53192539
+// Posted by Mahbub Hasan, modified by community. See post 'Timeline' for change history
+// Retrieved 2026-03-01, License - CC BY-SA 4.0
+
+  var container = document.querySelector("body");
+
+  container.addEventListener("touchstart", startTouch, false);
+  container.addEventListener("touchmove", moveTouch, false);
+
+  // Swipe Up / Down / Left / Right
+  var initialX = null;
+  var initialY = null;
+
+  function startTouch(e) {
+    initialX = e.touches[0].clientX;
+    initialY = e.touches[0].clientY;
+  };
+
+  function moveTouch(e) {
+    if (initialX === null) {
+      return;
+    }
+
+    if (initialY === null) {
+      return;
+    }
+
+    var currentX = e.touches[0].clientX;
+    var currentY = e.touches[0].clientY;
+
+    var diffX = initialX - currentX;
+    var diffY = initialY - currentY;
+
+    if (Math.abs(diffX) > Math.abs(diffY)) {
+      // sliding horizontally
+      if (diffX > 0) {
+        // swiped left
+const apps = document.getElementById("container") ;
+        apps.style.animation = "shrink 0.5s" ;
+        apps.style.scale = 0.9 ;
+        const panel = document.getElementById("more-apps") ;
+        panel.style.opacity = 1 ;
+        panel.style.zIndex = 10 ;
+        panel.style.animation = "left 0.5s" ;
+        s = 0;
+        
+      } else {
+        // swiped right
+        const apps = document.getElementById("container") ;
+        apps.style.animation = "zoom 0.5s" ;
+        apps.style.scale = 1 ;
+        const panel = document.getElementById("more-apps") ;
+        panel.style.opacity = 0 ;
+        setTimeout(back, 250);
+        panel.style.animation = "right 0.5s" ;
+        function back() {
+        	s = 1;
+panel.style.zIndex = -10 ;
+        }
+      }  
+    } else {
+      // sliding vertically
+      if (diffY > 0) {
+        // swiped up
+        console.log("swiped up");
+      } else {
+        // swiped down
+        console.log("swiped down");
+      }  
+    }
+
+    initialX = null;
+    initialY = null;
+
+    e.preventDefault();
+  };
+
+	</script>
+	<div id="more-apps" class="more-apps">
+		<div onclick="close2()" class="back1">
+		<script>
+			function close2() {
+        const apps = document.getElementById("container") ;
+        apps.style.animation = "zoom 0.5s" ;
+        apps.style.scale = 1 ;
+        const panel = document.getElementById("more-apps") ;
+        panel.style.opacity = 0 ;
+        panel.style.animation = "right 0.5s" ;
+setTimeout(() => {
+  panel.style.zIndex = -10 ;
+}, 250);
+			}
+		</script>
+		<img class="back" src="/images/icons/back.png">
+	    <p>NAVIGATION</p>
+		</div>
+		<div class="apps-page">
+			<a href="/index">
+		<p>
+		<img class="ex-apps" src="/images/icons/home.jpg">
+		<span class="label">Home</span>
+		</p>
+		</a>
+		<a href="/about">
+		<p>
+		<img class="ex-apps" src="/images/icons/about.jpg">
+		<span class="label">About me</span>
+		</p>
+		</a>
+		<a href="/gallery">
+		<p>
+		<img class="ex-apps" src="/images/icons/pictures.ico">
+		<span class="label" id="shared">Gallery</span>
+<span style="display:none" id="one">https://vuvien.xyz</span>
+		</p>
+		</a>
+<a href="/links">
+		<p>
+		<img style="filter:grayscale(100%)" class="ex-apps" src="/images/icons/link.jpg">
+		<span class="label">Links & Friends</span>
+		</p>
+		</a>
+		<a href="/gb">
+		<p>
+		<img class="ex-apps" src="/images/icons/gb.jpg">
+		<span class="label">Sign guestbook</span>
+		</p>
+		</a>
+
+<div style="visibility:hidden;width:100%;height:200px">a</div>
+	    </div>
+	</div>
+
+	<div onclick="more2()" class="bar">
+		<script>
+function showTime() {
+    const timeNow = new Date().toLocaleTimeString("en-US");
+    document.getElementById('clock2').textContent = timeNow;
+}
+setInterval(showTime, 1000);
+//
+var s = 1 ;
+function more2() {
+	if (s == 1) {
+const apps = document.getElementById("container") ;
+        apps.style.animation = "shrink 0.5s" ;
+        apps.style.scale = 0.9 ;
+        const panel = document.getElementById("more-apps") ;
+        panel.style.opacity = 1 ;
+        panel.style.zIndex = 10 ;
+        panel.style.animation = "left 0.5s" ;
+        s = 0 ;
+	} else {
+const apps = document.getElementById("container") ;
+        apps.style.animation = "zoom 0.5s" ;
+        apps.style.scale = 1 ;
+        const panel = document.getElementById("more-apps") ;
+        panel.style.opacity = 0 ;
+        panel.style.animation = "right 0.5s" ;
+setTimeout(() => {
+  panel.style.zIndex = -10 ;
+s = 1 ;
+}, 250);
+	}
+}
+		</script>
+<img src="/images/icons/home.png">
+		<p><span id="clock2"></span></p>
+	</div>
+
+<img alt="trong dong dong son background" class="rotating" src="https://vuvien.nekoweb.org/trongdong2.png" style ="pointer-events: none;opacity:0.1;position:fixed; z-index:-1; top:-350px" width="1000px" height="1000px">
+
+<div class="a">
+	<div id="container" class="container">
+	<div class="top">
+		<p>LINKS & FRIENDS</p>
+	</div>
+  <h1>Friend<span style="opacity:0.15">s</span> & Neighbors</h1>
+<div class="wrap">
+	<div class="wrap2">
+<a href="https://wafelz.straw.page/"><img src="wafelz.gif"></a>
+<a href="https://lucastheguy.nekoweb.org/" target="_blank"><img src="https://lucastheguy.nekoweb.org/images/button.gif"></a>
+<a href="https://ioxtv.co/"><img src="https://ioxtv.co/assets/buttons/iox.gif" alt="ioxTV"></a>
+  </div>
+  </div>
+  <h1>Link me</h1>
+  <p>Put this little site button on your own website and become my site neighbor!</p>
+  <div class="link-button">
+  	<img src="/images/button.jpg">
+  	<p><span style="color:#39db90">https://</span>vuvien.nekoweb.org/images/button.jpg</p>
+  </div>
+  <h1>Explore</h1>
+  <p>A place to hangout</p>
+  	<a href="https://snugnook.org"><img style="image-rendering:auto;margin-right:auto;margin-left:auto;max-width:600px;width:100%" src="/images/snugnook.jpg" >
+
+  <p>Personal & handmade websites</p>
+  <div class="wrap">
+  	<div class="wrap2">
+<a class="badge" href="https://dimden.dev/"><img src="https://dimden.dev/services/images/88x31.gif"></a>
+<a class="badge" href="https://duducat.moe/"><img src="https://duducat.moe/index/res/buttons/duducat.svg"></a>
+<a class="badge" href="https://bang1338.nekoweb.org/"><img src="https://bang1338.nekoweb.org/bang1338.gif" style="width: 88px;"></a>
+<a href="https://reduxflakes.nekoweb.org/"><img src="https://reduxflakes.nekoweb.org/public/buttons/reduc_anim.gif"></a>
+<a href="https://daudix.one"><img src="https://daudix.one/badges/badges/daudix.gif"></a>
+<a href="https://jbc.lol"><img src="https://jbc.lol/imgs/buttons/jbtn.svg" alt="jb's site" style="image-rendering: pixelated;"/></a>
+<a href="https://melankorin.net/"><img src="https://melankorin.net/assets/img/buttons/button-1.gif" alt=""></a>
+<a href="https://solinus.neocities.org"><img src="https://solinus.neocities.org/0_imgbrand/Button.png"></a>
+<a href="https://nekoweb.org/"><img src="https://nekoweb.org/assets/buttons/button11.gif"></a>
+<a href="https://blinchik.nekoweb.org/"><img src="https://blinchik.nekoweb.org/img/badge5.png" alt="Blin website" title="Ye"></a>
+<a href="https://mars.nekoweb.org/?button" target="_blank"><img src="https://mars.nekoweb.org/assets/buttons/button0.gif" alt="mars' site" width="88" height="31"></a>
+<a href="applecider.nekoweb.org"><img src="https://i.ibb.co/LX3Tsp5G/button.png" alt="applecider's button"></a>
+<a href="http://openbooks.neocities.org"><img src="https://openbooks.neocities.org/img/88x31.gif" height="31" width="88" style="image-rendering:pixelated;"/></a>
+<a href="https://petrapixel.neocities.org/" target="_blank"><img src="https://cdn.jsdelivr.net/gh/petracoding/petrapixel.neocities.org@latest/public/assets/img/linkback.gif" alt="petrapixel"></a>
+<a href="https://zenfyr.dev/"><img src="https://zenfyr.dev/88_31/88_31.webp" alt="zenfyr" title="zenfyr"></a>
+<a href="https://yatagarasu.nekoweb.org" target="_blank"><img src="https://yatagarasu.nekoweb.org/images/yatagarasuButtonW.gif" alt="Yatagarasu site button" title="Yatagarasu"></a>
+<a href="https://makoenergy.neocities.org/"><img src="https://makoenergy.neocities.org/images/sitebutton1.gif"></a>
+<a href="https://evehibi.nekoweb.org/"><img src="https://evehibi.nekoweb.org/button1.gif" alt="evehibi"/></a>
+<a href="https://sheep.nekoweb.org/" target="_blank"><img src="https://sheep.nekoweb.org/assets/mybutton.gif"></a>
+<a href="https://layercake.moe/"><img src="https://layercake.moe/assets/images/buttons/mine/newlyckev2.gif"></a>
+<a href="https://milkbones.nekoweb.org" target="_blank"><img src="https://i.imgur.com/Y1kObgV.gif" alt="milkbones"></a>
+<a href="https://coffeeknife.nekoweb.org"><img src="http://coffeeknife.nekoweb.org/badges/coffeeknife.png" alt="A button with a small purple coffee cup and the text 'coffeknife.nekoweb.org'"></a>
+<a href="https://archi.moe/homepage"><img src="https://archi.moe/images/button.png"></a>
+<a href="https://lobie5.nekoweb.org"><img src="https://lobie5.nekoweb.org/images/collections/buttons/lobie5button(1).png" alt="Lobie5"></a>
+<a href="https://nomaakip.xyz/"><img src="https://nomaakip.xyz/img/buttons/button.png"></a>
+<a href="https://gifypet.neocities.org/"><img src="https://gifypet.neocities.org/images/badge.gif"></a>
+<a href="https://theabsoluterealm.com/main"><img src="https://theabsoluterealm.com/buttons/absolute-realm.gif"></a>
+<a href="https://thinliquid.dev/"><img src="https://thinliquid.dev/buttons/btn.png"></a>
+
+</div>
+</div>
+<p>Awesome projects</p>
+<div class="wrap">
+	<div class="wrap2">
+<a href="https://nekoweb.org/"><img src="https://nekoweb.org/assets/buttons/button5.gif"></a><!-- button by max.nekoweb.org -->
+<a href="https://neocities.org"><img src="https://88by31.neocities.org/web/neocities-org.gif"></a>
+<a class="hover" href="https://castle.xyz"><img src="https://vuvien.nekoweb.org/c.gif"></a>
+<a class="hover" href="https://bugdroid.org"><img src="https://bugdroid.org/meta/button-droid-pack.png"></a>
+<a class="hover" href="https://ytoo.org"><img src="https://ytoo.org/img/ytoo_88x31.gif"></a>
+<a href="https://ioxtv.co/"><img src="https://ioxtv.co/assets/buttons/iox.gif" alt="ioxTV"></a>
+<a href="https://spacehey.com"><img src="https://daudix.one/badges/badges/spacehey.gif"></a>
+<a href="https://atabook.org"><img src="https://ioxtv.co/assets/buttons/links/atabook.gif"></a>
+<a href="https://status.cafe"><img src="https://status.cafe/assets/button.png" alt="Status Cafe"/></a>
+<a href="https://webtiles.kicya.net/"><img src="https://ioxtv.co/assets/buttons/links/webtiles.gif"></a>
+<a href="https://duducat.moe/stampbook"><img src="https://duducat.moe/stampbook/res/share/88x31.png"></a>
+</div>
+</div>
+
+<p>Not links, but feel like putting them here</p>
+<div class="wrap">
+	<div class="wrap2">
+<img src="https://daudix.one/badges/badges/mobilefriendly.gif">
+<img src="https://trafficlunar.net/88x31/responsive.png">
+<a href="https://vuvien.atabook.org"><img src="https://anlucas.neocities.org/88tgb-button1.gif"></a>
+<img src="https://rknight.me/assets/img/buttons/valid-html5.gif">
+<img src="https://88by31.neocities.org/web/css.gif">
+<img src="https://88by31.neocities.org/web/bestview.gif">
+<img src="https://88by31.neocities.org/web/madewithlove.png">
+<img src="https://88by31.neocities.org/web/svg-8831.svg">
+<img src="https://gemdation.com/media/buttons/powered-by-imagination.gif">
+<img src="https://vuvien.nekoweb.org/8k.png">
+<img src="https://cyber.dabamos.de/88x31/best_chrome.gif">
+<img src="https://galissia.neocities.org/images/buttons/handcoded.gif">
+<img src="https://cyber.dabamos.de/88x31/gmail.gif">
+<img src="https://cyber.dabamos.de/88x31/got_html.gif">
+<img src="https://cyber.dabamos.de/88x31/mslive.gif">
+<img src="https://frutigeraero.org/images/resources/buttons/frutiger_aero_community.png">
+<img src="https://cyber.dabamos.de/88x31/msn.gif">
+<img src="https://cyber.dabamos.de/88x31/no-button.gif">
+<img src="https://cyber.dabamos.de/88x31/nneighborhoodsmall.gif">
+<img src="https://cyber.dabamos.de/88x31/starlocked.gif">
+<img src="https://cyber.dabamos.de/88x31/sucks.gif">
+<img src="https://cyber.dabamos.de/88x31/spotify.gif">
+<img src="https://cyber.dabamos.de/88x31/theoldnet_but.gif">
+<img src="https://cyber.dabamos.de/88x31/thanks-for-looking.gif">
+<img src="https://cyber.dabamos.de/88x31/valid-rss.gif">
+<img src="https://cyber.dabamos.de/88x31/w3schools88x31.gif">
+<img src="https://cyber.dabamos.de/88x31/ytbutton.gif">
+<img src="https://cyber.dabamos.de/88x31/wii.gif">
+<img src="https://cyber.dabamos.de/88x31/wikipedia.gif">
+<img src="https://cyber.dabamos.de/88x31/windows_media_player.gif">
+<img src="https://cyber.dabamos.de/88x31/tor.gif">
+<img src="https://cyber.dabamos.de/88x31/3dot5mmfc-button.gif">
+<img src="https://yesterhost.neocities.org/archive/buttons/button484.gif">
+</div>
+</div>
+<h1>Stamps</h1>
+<p>Trust me this is the best place to put these, i also made some of them</p>
+<div class="wrap">
+	<div class="wrap2">
+		<img src="https://gifcity.carrd.co/assets/images/gallery61/da67228e.jpg?v=e3c0bc0f">
+		<img src="https://gifcity.carrd.co/assets/images/gallery56/62a58be7.png?v=e3c0bc0f">
+		<img src="https://gifcity.carrd.co/assets/images/gallery55/e45f5cec.png?v=e3c0bc0f">
+		<img src="https://autism.crd.co/assets/images/gallery05/261606bf.png?v=d6547f5c">
+		<img src="https://autism.crd.co/assets/images/gallery05/12d0e126.png?v=d6547f5c">
+		<img src="https://supplies.ju.mp/assets/images/gallery01/564b4b6c.png?v=1c1ba870">
+		<img src="https://supplies.ju.mp/assets/images/gallery01/7b039076.gif?v=1c1ba870">
+		<img src="https://adriansblinkiecollection.neocities.org/stamps/e44.gif">
+		<img src="https://adriansblinkiecollection.neocities.org/stamps/f27.gif">
+		<img src="https://adriansblinkiecollection.neocities.org/stamps/d1.gif">
+		<img src="https://adriansblinkiecollection.neocities.org/stamps/d59.png">
+		<img src="/images/st1.png">
+		<img src="/images/st2.png">
+		<img src="/images/st3.png">
+		<img src="/images/st4.png">
+		<img src="/images/st5.png">
+		<img src="/images/st6.png">
+		<img src="/images/st7.png">
+		<img src="/images/st8.png">
+		<img src="/images/st9.png">
+		<img src="/images/st10.png">
+	</div>
+</div>
+<h1>Webrings</h1>
+<p>This site isn't a part of any webrings...Yet.
+<br>Is there any cool webrings? Please tell me!</p>
+	<div class="bottom-filler"></div>
+	</div>
+	</div>
+</body>
+</html>
